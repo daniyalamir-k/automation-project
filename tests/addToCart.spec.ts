@@ -6,29 +6,13 @@ import { ProductPage } from '../pages/productPage';
 test('Add Product To Cart - Automation Exercise', async ({ page }) => {
 
     const auth = new AuthPage(page);
- 
-     await auth.gotoLogin();
-     await auth.login(users.validUser.email, users.validUser.password);
+    await auth.gotoLogin();
+    await auth.login(users.validUser.email, users.validUser.password);
 
     const product = new ProductPage(page);
-
-    // Go to products page
     await product.gotoProducts();
-
-    // Add first product to cart
     await product.addFirstProductToCart();
-
-    // Open cart page
     await product.openCart();
 
-
-    // Verify product added
     await expect(page.locator('.cart_description')).toBeVisible();
-    
-
-    // to see cart
-    await page.waitForTimeout(3000);
-
-    // for browser stays open
-    await page.pause();  
 });

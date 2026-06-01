@@ -11,16 +11,11 @@ test('checkout flow', async ({ page }) => {
 
     const product = new ProductPage(page);
     await product.gotoProducts();
-
-    //  Re-verify still logged in after navigation
     await expect(page.locator('text=Logged in as')).toBeVisible();
 
     await product.addFirstProductToCart();
     await page.click('a[href="/view_cart"]');
     await page.getByText('Proceed To Checkout').click();
 
-    //  Assert checkout page loaded
     await expect(page.locator('text=Address Details')).toBeVisible();
-
-await page.pause();  
 });
