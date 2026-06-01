@@ -11,6 +11,6 @@ test('User Logout Test - Automation Exercise', async ({ page }) => {
 
     await auth.logout();
 
-    // Assertion: back to login page
+    // back to login page
     await expect(page).toHaveURL('https://automationexercise.com/login');
 });

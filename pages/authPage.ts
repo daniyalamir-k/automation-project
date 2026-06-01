@@ -17,7 +17,7 @@ export class AuthPage {
 
         await this.page.click('button[data-qa="login-button"]');
 
-        // 🔥 IMPORTANT: wait for login success
+        // wait for login success
         await expect(this.page.locator('text=Logged in as')).toBeVisible();
     }
 

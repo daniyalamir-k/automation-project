@@ -26,8 +26,9 @@ test('Add Product To Cart - Automation Exercise', async ({ page }) => {
     await expect(page.locator('.cart_description')).toBeVisible();
     
 
-    // Optional pause so you can see cart
+    // to see cart
     await page.waitForTimeout(3000);
-    // last line before closing brace
-await page.pause();  // browser stays open, Playwright Inspector pops up
+
+    // for browser stays open
+    await page.pause();  
 });

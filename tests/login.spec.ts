@@ -9,6 +9,6 @@ test('User Login Test - Automation Exercise', async ({ page }) => {
     await auth.gotoLogin();
     await auth.login(users.validUser.email, users.validUser.password);
 
-    // Assertion: Logged in check
+    //  Logged in check
     await expect(page.locator('a[href="/logout"]')).toBeVisible();
 });

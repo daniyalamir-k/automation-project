@@ -6,24 +6,19 @@ export default defineConfig({
 
   use: {
     browserName: 'chromium',
-    headless: false,
+    headless: process.env.CI ? true : false,
 
     launchOptions: {
-
-    slowMo: 1000
-
+      slowMo: process.env.CI ? 0 : 1000, 
     },
 
-    
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    baseURL: 'https://www.automationexercise.com'
-   
-
+    baseURL: 'https://www.automationexercise.com',
   },
 
   reporter: [
-    ['html', { open: 'never' }]   // 👈 IMPORTANT
-  ]
+    ['html', { open: 'never' }],
+  ],
 
 });
