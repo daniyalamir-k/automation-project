@@ -8,22 +8,19 @@ export class AuthPage {
     }
 
     async gotoLogin() {
-        await this.page.goto('/login');
+        await this.page.goto('/login', { waitUntil: 'domcontentloaded' });
+        await this.page.waitForSelector('input[data-qa="login-email"]', { timeout: 60000 });
     }
 
     async login(email: string, password: string) {
         await this.page.fill('input[data-qa="login-email"]', email);
         await this.page.fill('input[data-qa="login-password"]', password);
-
         await this.page.click('button[data-qa="login-button"]');
-
-        // wait for login success
         await expect(this.page.locator('text=Logged in as')).toBeVisible();
     }
 
     async logout() {
         const logoutBtn = this.page.locator('a[href="/logout"]');
-
         await expect(logoutBtn).toBeVisible();
         await logoutBtn.click();
     }
