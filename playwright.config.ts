@@ -2,7 +2,7 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  timeout: 60000,  // 30s → 60s (slow site ke liye)
+  timeout: 60000,  
 
   use: {
     browserName: 'chromium',
@@ -13,7 +13,7 @@ export default defineConfig({
     },
 
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    video: 'on',
     baseURL: 'https://www.automationexercise.com',
   },
 
